@@ -1,0 +1,17 @@
+name:logistic_Pipeline
+
+conda_env: conda.yaml
+
+entry_points:
+  main:
+    parameters:
+      ngram: {type: int, default: 1}
+      nb_hash: {type: int, default:10000}
+      maxIter: {type: int, default:200}
+      regParam: {type: float, default: 0.01}
+      elasticNetParam: {type:float,default:0.0}
+    command: "python train.py --ngram {ngram}
+                              --nb_hash {nb_hash}
+                              --maxIter {maxIter}
+                              --regParam {regParam}
+                              --elasticNetParam {elasticNetParam}"
