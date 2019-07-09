@@ -1,0 +1,1 @@
+{"class":"org.apache.spark.ml.feature.NGram","timestamp":1561650999874,"sparkVersion":"2.4.3","uid":"NGram_e0be6bd5201d","paramMap":{"outputCol":"bigrams","n":1,"inputCol":"stopTokenizedDescr"},"defaultParamMap":{"outputCol":"NGram_e0be6bd5201d__output","n":2}}

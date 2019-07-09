@@ -1,0 +1,15 @@
+artifact_uri: file:///home/bilal/tmp/dev/PysparkNatualLangageProcessing/mlruns/0/4560d9e78ca54fc9a7a5951ac8a1ff04/artifacts
+end_time: 1561642275076
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+name: ''
+run_id: 4560d9e78ca54fc9a7a5951ac8a1ff04
+run_uuid: 4560d9e78ca54fc9a7a5951ac8a1ff04
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1561642266697
+status: 3
+tags: []
+user_id: bilal

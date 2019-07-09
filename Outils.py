@@ -4,11 +4,9 @@ from pyspark.ml.param.shared import HasInputCol, HasOutputCol
 from pyspark.sql.functions import udf
 from pyspark.sql.types import ArrayType, StringType
 import nltk
-nltk.__version__
 from pyspark.ml.feature import StopWordsRemover
-
 class MyNltkStemmer(Transformer, HasInputCol, HasOutputCol):
-
+   
     @keyword_only
     def __init__(self, inputCol=None, outputCol=None):
         super(MyNltkStemmer, self).__init__()
@@ -31,12 +29,12 @@ class MyNltkStemmer(Transformer, HasInputCol, HasOutputCol):
         return dataset.withColumn(out_col, udfCleanText(in_col))
     
 
-def remover(inputCol="tokenizedDescr",outputCol="stopTokenizedDescr"):
+def remover(inputCol,outputCol):
     s=set(nltk.corpus.stopwords.words('french'))
     lucene_stopwords =open("data/lucene_stopwords.txt","r").read().split(",") #En local
     ## Union des deux fichiers de stopwords 
     stopwords = list(s.union(set(lucene_stopwords)))
-    return StopWordsRemover(inputCol="tokenizedDescr", outputCol="stopTokenizedDescr", stopWords =stopwords)
+    return StopWordsRemover(inputCol=inputCol, outputCol=outputCol, stopWords =stopwords)
 
 
 
