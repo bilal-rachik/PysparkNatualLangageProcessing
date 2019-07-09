@@ -20,7 +20,9 @@ def jsntodf(jsn):
     df['credit_o_n']=df.credit.isnull()
     df['credit_o_n'] = df.credit_o_n.astype(float)
     return df
-    
+@app.route('/')
+def hello_world():
+    return 'Hello, World!'
 
 @app.route('/api/categorize', methods=['POST'])
 def pred():
@@ -39,8 +41,8 @@ def pred():
     
     return json.jsonify(df)
 if __name__=="__main__":
-    app.run(debug=True,host='0.0.0.0',port=80 )
-    app.ru
+    app.run(debug=True,host='0.0.0.0',port=8080)
+
 
 
 
