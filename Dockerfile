@@ -1,15 +1,31 @@
 #FROM alpine:3.1
 FROM continuumio/miniconda3
 
+
+# JAVA
+RUN \
+  echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | debconf-set-selections && \
+  add-apt-repository -y ppa:webupd8team/java && \
+  apt-get update && \
+  apt-get install -y oracle-java8-installer && \
+  rm -rf /var/lib/apt/lists/* && \
+  rm -rf /var/cache/oracle-jdk8-installer
+
+ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
+
+
+
 #SPARK
 ENV SPARK_VERSION 2.4.3
 ENV SPARK_HOME /spark/spark-${SPARK_VERSION}
 ENV PATH $PATH:${SPARK_HOME}/bin
+
 RUN wget https://archive.apache.org/dist/spark/spark-${SPARK_VERSION}/spark-${SPARK_VERSION}-bin-hadoop2.7.tgz \
     && tar -xvf spark-${SPARK_VERSION}-bin-hadoop2.7.tgz \
     && mv spark-${SPARK_VERSION}-bin-hadoop2.7 spark \
     && rm spark-${SPARK_VERSION}-bin-hadoop2.7.tgz \
     && cd /
+
 # HADOOP
 ENV HADOOP_VERSION 2.7.1
 ENV HADOOP_HOME /spark/hadoop-$HADOOP_VERSION
@@ -20,9 +36,6 @@ RUN wget https://archive.apache.org/dist/hadoop/core/hadoop-${HADOOP_VERSION}/ha
   && mv hadoop-${HADOOP_VERSION} spark \
   && rm hadoop-${HADOOP_VERSION}.tar.gz \
   && cd /
-
-
-
 
 #Creating an environment
 ADD . /
@@ -37,23 +50,8 @@ RUN conda env create -f environment.yml
 RUN echo "source activate py36" > ~/.bashrc
 ENV PATH /opt/conda/envs/py36/bin:$PATH
 
-# JAVA
-RUN apt-get update \
- && apt-get install -y openjdk-8-jre \
- && apt-get clean \
- && rm -rf /var/lib/apt/lists/*
-
-
-
 
 ENV PYTHONPATH ${SPARK_HOME}/python:${SPARK_HOME}/python/lib/py4j-0.10.7-src.zip
-
-
-
-
-
-
-
 
 # Bundle app source
 EXPOSE  80
