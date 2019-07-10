@@ -12,4 +12,4 @@ ENV PATH /opt/conda/envs/py36/bin:$PATH
 
 # Bundle app source
 EXPOSE  80
-CMD ["python", "hello.py"]
+CMD ["python", "prediction.py"]
