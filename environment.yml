@@ -5,9 +5,9 @@ channels:
 dependencies:
   - python==3.6
   - flask
-  #- pandas
-  #- pyspark=2.4.3
-  #- pip:
-   #   - mlflow
+  - pandas
+  - pyspark=2.4.3
+  - pip:
+      - mlflow
 
 
