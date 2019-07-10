@@ -28,7 +28,7 @@ ENV PATH $PATH:$HADOOP_HOME/bin
 RUN wget https://archive.apache.org/dist/hadoop/core/hadoop-${HADOOP_VERSION}/hadoop-${HADOOP_VERSION}.tar.gz \
   && tar -xvf hadoop-2.7.3.tar.gz \
   && mv hadoop${HADOOP_VERSION} spark \
-  && rm hadoop${HADOOP_VERSION}.tgz
+  && rm hadoop${HADOOP_VERSION}.tgz \
   && cd /
 
 #SPARK
