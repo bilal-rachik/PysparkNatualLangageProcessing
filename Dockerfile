@@ -11,18 +11,15 @@ ENV PATH $PATH:$HADOOP_HOME/bin
 RUN wget https://archive.apache.org/dist/hadoop/core/hadoop-${HADOOP_VERSION}/hadoop-${HADOOP_VERSION}.tar.gz \
   && tar -xvf hadoop-${HADOOP_VERSION}.tar.gz \
   && mv hadoop-${HADOOP_VERSION} spark \
-  && rm hadoop-${HADOOP_VERSION}.tar.tgz \
+  && rm hadoop-${HADOOP_VERSION}.tar.gz \
   && cd /
-
-
-
 
 #SPARK
 ENV SPARK_VERSION 2.4.3
 ENV SPARK_HOME /spark/spark-${SPARK_VERSION}
 ENV PATH $PATH:${SPARK_HOME}/bin
 RUN wget https://archive.apache.org/dist/spark/spark-${SPARK_VERSION}/spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}.tgz \
-    && tar -xvzf spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}.tgz \
+    && tar -xvf spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}.tgz \
     && mv spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION} spark \
     && rm spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}.tgz \
     && cd /
