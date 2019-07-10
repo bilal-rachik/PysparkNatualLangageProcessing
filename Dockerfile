@@ -3,7 +3,7 @@ FROM continuumio/miniconda3
 
 
 # JAVA
-RUN add-apt-repository -y ppa:webupd8team/java
+RUN sudo add-apt-repository -y ppa:webupd8team/java
   #&& \
   #apt-get update && \
   #apt-get install -y oracle-java8-installer && \
