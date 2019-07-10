@@ -3,16 +3,6 @@ FROM continuumio/miniconda3
 
 
 
-
-#SPARK
-ENV SPARK_VERSION 2.4.3
-ENV SPARK_HOME /spark/spark-${SPARK_VERSION}
-ENV PATH $PATH:${SPARK_HOME}/bin
-RUN wget https://archive.apache.org/dist/spark/spark-${SPARK_VERSION}/spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}.tgz \
-    && tar -xvzf spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}.tgz \
-    && mv spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION} spark \
-    && rm spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}.tgz \
-    && cd /
 # HADOOP
 ENV HADOOP_VERSION 2.7.1
 ENV HADOOP_HOME /usr/hadoop-$HADOOP_VERSION
@@ -25,6 +15,17 @@ RUN wget https://archive.apache.org/dist/hadoop/core/hadoop-${HADOOP_VERSION}/ha
   && cd /
 
 
+
+
+#SPARK
+ENV SPARK_VERSION 2.4.3
+ENV SPARK_HOME /spark/spark-${SPARK_VERSION}
+ENV PATH $PATH:${SPARK_HOME}/bin
+RUN wget https://archive.apache.org/dist/spark/spark-${SPARK_VERSION}/spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}.tgz \
+    && tar -xvzf spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}.tgz \
+    && mv spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION} spark \
+    && rm spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}.tgz \
+    && cd /
 
 #Creating an environment
 ADD . /
