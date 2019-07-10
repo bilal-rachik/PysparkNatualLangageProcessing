@@ -2,7 +2,7 @@
 FROM continuumio/miniconda3
 
 #Creating an environment
-ADD environment.yml
+ADD environment.yml /
 RUN conda env create -f environment.yml
 
 # Pull the environment name out of the environment.yml
