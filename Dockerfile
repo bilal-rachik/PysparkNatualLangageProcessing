@@ -12,4 +12,4 @@ ENV PATH /opt/conda/envs/$(head -1 environment.yml | cut -d' ' -f2)/bin:$PATH
 
 # Bundle app source
 EXPOSE  80
-CMD ["python", "prediction.py"]
+CMD ["python", "hello.py"]

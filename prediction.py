@@ -2,7 +2,7 @@ from pyspark.sql import SparkSession
 import mlflow.spark
 import pandas as pd
 import mlflow.pyfunc
-from flask import Flask ,jsonify,request,json
+from flask import Flask,request,json
 
 app = Flask(__name__)
 spark = SparkSession.builder \
