@@ -3,9 +3,7 @@ FROM continuumio/miniconda3
 
 
 # JAVA
-RUN \
-  echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | debconf-set-selections \
-  && apt-add-repository ppa:webupd8team/java \
+RUN apt-add-repository ppa:webupd8team/java \
   && apt-get update \
   && apt-get install oracle-java8-installer \
   && rm -rf /var/lib/apt/lists/* \
