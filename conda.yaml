@@ -1,15 +1,4 @@
-name: LogisticRegression_for_NLP
-channels:
-  - defaults
-  - anaconda
-dependencies:
-  - python==3.6
-  - scikit-learn=0.19.1
-  -click=7.0
-  -pyspark=2.4.3
-  -nltk=3.4
-  - pip:
-    - mlflow 
+
 
 
 

@@ -1,0 +1,10 @@
+name: py36
+channels:
+  - defaults
+  - anaconda
+dependencies:
+  - python==3.6
+  -click=7.0
+  -pyspark=2.4.3
+  - flask
+  - -c conda-forge mlflow
