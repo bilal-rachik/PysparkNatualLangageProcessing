@@ -5,10 +5,10 @@ FROM continuumio/miniconda3
 ENV SPARK_VERSION 2.4.3
 ENV SPARK_HOME /spark/spark-${SPARK_VERSION}
 ENV PATH $PATH:${SPARK_HOME}/bin
-RUN wget https://archive.apache.org/dist/spark/spark-${SPARK_VERSION}/spark-${SPARK_VERSION}-bin-hadoop${2.7}.tgz \
-    && tar -xvf spark-${SPARK_VERSION}-bin-hadoop${2.7}.tgz \
-    && mv spark-${SPARK_VERSION}-bin-hadoop${2.7} spark \
-    && rm spark-${SPARK_VERSION}-bin-hadoop${2.7}.tgz \
+RUN wget https://archive.apache.org/dist/spark/spark-${SPARK_VERSION}/spark-${SPARK_VERSION}-bin-hadoop2.7.tgz \
+    && tar -xvf spark-${SPARK_VERSION}-bin-hadoop2.7.tgz \
+    && mv spark-${SPARK_VERSION}-bin-hadoop2.7 spark \
+    && rm spark-${SPARK_VERSION}-bin-hadoop2.7.tgz \
     && cd /
 # HADOOP
 ENV HADOOP_VERSION 2.7.1
