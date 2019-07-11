@@ -3,6 +3,19 @@ FROM continuumio/miniconda3
 
 ADD . /
 
+#Creating an environment
+
+RUN conda env create -f environment.yml
+
+# Updating Anaconda packages
+#RUN conda update conda
+#RUN conda update anaconda
+#RUN conda update --all
+
+# Pull the environment name out of the environment.yml
+RUN echo "source activate py36" > ~/.bashrc
+ENV PATH /opt/conda/envs/py36/bin:$PATH
+
 # JAVA
 RUN tar -xvf jdk-8u211-linux-x64.tar.gz \
    && mv jdk1.8.0_211 spark \
@@ -34,18 +47,7 @@ RUN wget https://archive.apache.org/dist/hadoop/core/hadoop-${HADOOP_VERSION}/ha
   && rm hadoop-${HADOOP_VERSION}.tar.gz \
   && cd /
 
-#Creating an environment
 
-RUN conda env create -f environment.yml
-
-# Updating Anaconda packages
-#RUN conda update conda
-#RUN conda update anaconda
-#RUN conda update --all
-
-# Pull the environment name out of the environment.yml
-RUN echo "source activate py36" > ~/.bashrc
-ENV PATH /opt/conda/envs/py36/bin:$PATH
 
 
 ENV PYTHONPATH ${SPARK_HOME}/python:${SPARK_HOME}/python/lib/py4j-0.10.7-src.zip
