@@ -24,14 +24,13 @@ ENV JAVA_HOME /jdk1.8.0_211
 ENV PATH JAVA_HOME/bin:$PATH
 
 #SPARK
-ENV SPARK_VERSION 2.4.3
-ENV SPARK_HOME /spark-${SPARK_VERSION}
+ENV SPARK_HOME /spark-2.4.3
 ENV PATH $PATH:${SPARK_HOME}/bin
 ENV PATH $PATH:${SPARK_HOME}/sbin
 
-RUN wget https://archive.apache.org/dist/spark/spark-${SPARK_VERSION}/spark-${SPARK_VERSION}-bin-hadoop2.7.tgz \
-    && tar -xvf spark-${SPARK_VERSION}-bin-hadoop2.7.tgz \
-    && rm spark-${SPARK_VERSION}-bin-hadoop2.7.tgz
+RUN wget http://mirrors.ircam.fr/pub/apache/spark/spark-2.4.3/spark-2.4.3-bin-hadoop2.7.tgz \
+    && tar -xvf spark-2.4.3-bin-hadoop2.7.tgz \
+    && rm spark-2.4.3-bin-hadoop2.7.tgz
 
 # HADOOP
 ENV HADOOP_VERSION 2.7.1
