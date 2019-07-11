@@ -18,39 +18,42 @@ ENV PATH /opt/conda/envs/py36/bin:$PATH
 
 # JAVA
 RUN tar -xvf jdk-8u211-linux-x64.tar.gz \
-   && mv jdk1.8.0_211 spark \
-   && rm jdk-8u211-linux-x64.tar.gz \
-   && cd /
+   && rm jdk-8u211-linux-x64.tar.gz
 
-ENV JAVA_HOME /spark/jdk1.8.0_211
-ENV PATH $PATH:$JAVA_HOME/bin
+ENV JAVA_HOME /jdk1.8.0_211
+ENV PATH JAVA_HOME/bin:$PATH
 
 #SPARK
 ENV SPARK_VERSION 2.4.3
-ENV SPARK_HOME /spark/spark-${SPARK_VERSION}
+ENV SPARK_HOME /spark-${SPARK_VERSION}
 ENV PATH $PATH:${SPARK_HOME}/bin
+ENV PATH $PATH:${SPARK_HOME}/sbin
 
 RUN wget https://archive.apache.org/dist/spark/spark-${SPARK_VERSION}/spark-${SPARK_VERSION}-bin-hadoop2.7.tgz \
     && tar -xvf spark-${SPARK_VERSION}-bin-hadoop2.7.tgz \
-    && mv spark-${SPARK_VERSION}-bin-hadoop2.7 spark \
-    && rm spark-${SPARK_VERSION}-bin-hadoop2.7.tgz \
-    && cd /
+    && rm spark-${SPARK_VERSION}-bin-hadoop2.7.tgz
 
 # HADOOP
 ENV HADOOP_VERSION 2.7.1
-ENV HADOOP_HOME /spark/hadoop-$HADOOP_VERSION
+ENV HADOOP_HOME /hadoop-$HADOOP_VERSION
 ENV PATH $PATH:$HADOOP_HOME/bin
 
 RUN wget https://archive.apache.org/dist/hadoop/core/hadoop-${HADOOP_VERSION}/hadoop-${HADOOP_VERSION}.tar.gz \
   && tar -xvf hadoop-${HADOOP_VERSION}.tar.gz \
-  && mv hadoop-${HADOOP_VERSION} spark \
-  && rm hadoop-${HADOOP_VERSION}.tar.gz \
-  && cd /
-
-
-
+  && rm hadoop-${HADOOP_VERSION}.tar.gz
 
 ENV PYTHONPATH ${SPARK_HOME}/python:${SPARK_HOME}/python/lib/py4j-0.10.7-src.zip
+
+#RUN echo "export JAVA_HOME=/spark/jdk1.8.0_211" >> ~/.bashrc
+#  && echo "export SPARK_HOME=/spark/spark-${SPARK_VERSION}" >> ~/.bashrc
+#  && echo "export PATH=$PATH:$JAVA_HOME/bin" >> ~/.bashrc
+#  && echo "export PATH=$SPARK_HOME/bin:$SPARK_HOME/sbin" >> ~/.bashrc
+#  && echo "export PYTHONPATH=$SPARK_HOME/python:$PYTHONPATH >> ~/.bashrc
+
+
+
+
+
 
 # Bundle app source
 EXPOSE  80
