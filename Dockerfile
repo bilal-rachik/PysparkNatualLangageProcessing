@@ -5,11 +5,11 @@ ADD . /
 
 # JAVA
 RUN tar -xvf jdk-8u211-linux-x64.tar.gz \
-   && mv jdk-8u211-linux-x64 spark \
+   && mv jdk1.8.0_211 spark \
    && rm jdk-8u211-linux-x64.tar.gz \
    && cd /
 
-ENV JAVA_HOME /spark/jdk-8u211-linux-x64/jdk1.8.0_211
+ENV JAVA_HOME /spark/jdk1.8.0_211
 ENV PATH $PATH:$JAVA_HOME/bin
 
 #SPARK
