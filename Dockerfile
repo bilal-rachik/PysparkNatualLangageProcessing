@@ -4,7 +4,7 @@ FROM continuumio/miniconda3
 ADD . /
 
 # JAVA
-RUN && tar -xvf jdk-8u211-linux-x64.tar.gz \
+RUN tar -xvf jdk-8u211-linux-x64.tar.gz \
    && mv jdk-8u211-linux-x64 spark \
    && rm jdk-8u211-linux-x64.tar.gz \
    && cd /
