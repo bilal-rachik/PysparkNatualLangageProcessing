@@ -24,7 +24,7 @@ ENV JAVA_HOME /jdk1.8.0_211
 ENV PATH JAVA_HOME/bin:$PATH
 
 #SPARK
-ENV SPARK_HOME /spark-2.4.3
+ENV SPARK_HOME /spark-2.4.3-bin-hadoop2.7
 ENV PATH $PATH:${SPARK_HOME}/bin
 ENV PATH $PATH:${SPARK_HOME}/sbin
 
@@ -44,7 +44,7 @@ RUN wget https://archive.apache.org/dist/hadoop/core/hadoop-${HADOOP_VERSION}/ha
 ENV PYTHONPATH ${SPARK_HOME}/python:${SPARK_HOME}/python/lib/py4j-0.10.7-src.zip
 
 #RUN echo "export JAVA_HOME=/spark/jdk1.8.0_211" >> ~/.bashrc
-#  && echo "export SPARK_HOME=/spark/spark-${SPARK_VERSION}" >> ~/.bashrc
+#  && echo "export SPARK_HOME=/spark-2.4.3" >> ~/.bashrc
 #  && echo "export PATH=$PATH:$JAVA_HOME/bin" >> ~/.bashrc
 #  && echo "export PATH=$SPARK_HOME/bin:$SPARK_HOME/sbin" >> ~/.bashrc
 #  && echo "export PYTHONPATH=$SPARK_HOME/python:$PYTHONPATH >> ~/.bashrc
