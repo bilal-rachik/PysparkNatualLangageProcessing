@@ -1,18 +1,16 @@
 #FROM alpine:3.1
 FROM continuumio/miniconda3
 
+ADD . /
 
 # JAVA
-RUN sudo add-apt-repository -y ppa:webupd8team/java
-  #&& \
-  #apt-get update && \
-  #apt-get install -y oracle-java8-installer && \
-  #rm -rf /var/lib/apt/lists/* && \
-  #rm -rf /var/cache/oracle-jdk8-installer
+RUN && tar -xvf jdk-8u211-linux-x64.tar.gz \
+   && mv jdk-8u211-linux-x64 spark \
+   && rm jdk-8u211-linux-x64.tar.gz \
+   && cd /
 
-ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
-
-
+ENV JAVA_HOME /spark/jdk-8u211-linux-x64/jdk1.8.0_211
+ENV PATH $PATH:$JAVA_HOME/bin
 
 #SPARK
 ENV SPARK_VERSION 2.4.3
@@ -37,7 +35,7 @@ RUN wget https://archive.apache.org/dist/hadoop/core/hadoop-${HADOOP_VERSION}/ha
   && cd /
 
 #Creating an environment
-ADD . /
+
 RUN conda env create -f environment.yml
 
 # Updating Anaconda packages
